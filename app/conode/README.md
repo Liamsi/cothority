@@ -121,7 +121,8 @@ For Conode to compile, you need to have the dedis/crypto-library in branch
 ```shamir``` and the conode in branch ```development```. We suppose you have
 a running 
 
-```go get https://github.com/dedis/cothority
+```
+go get https://github.com/dedis/cothority
 cd $GOPATH/src/github.com/dedis/crypto
 git checkout shamir
 cd ../cothority
@@ -225,19 +226,20 @@ and the inclusion-proof in ```file.sig```.
 
 The signature is linked to the actual conode-tree, to check whether it
 has been signed by it, you can use
+```
+./stamp check file
+```
 
-```./stamp check file```
-
-If ```file``` is present, it's hash-value is verified against the value stored
-in ```file.sig```, else only the information in ```file.sig``` is verified.
+If `file` is present, it's hash-value is verified against the value stored
+in `file.sig`, else only the information in ```file.sig``` is verified.
 
 ## Set up your own conodes
 
 If you want to create your own tree of conodes, there are two additional
 commands that will help you:
 
-- ```check``` - to check whether a new node is available
-- ```build``` - to create a ```config.toml```-file
+- `check` - to check whether a new node is available
+- `build` - to create a `config.toml`-file
 
 ### Check whether a node is available
 
@@ -249,9 +251,11 @@ in the conode-directory.
 We propose to watch the availability of his node over a period of at least 24h.
 To check, whether his server is up and running, type the following:
 
-```./conode check keyname.pub```
+```
+./conode check keyname.pub
+```
 
-```keyname.pub``` is the public keyfile of the user. Conode will verify that the
+`keyname.pub` is the public keyfile of the user. Conode will verify that the
 server is available at the given address and whether his private key corresponds
 to the given public key.
 
@@ -259,10 +263,12 @@ to the given public key.
 
 Once you checked the server to a corresponding key.pub-file is available,
 you can concatenate them to build a host-list, then pass it to the 
-```conode```-binary:
+`conode`-binary:
 
-```cat key*pub > hostlist```
-```./conode build hostlist```
+```
+cat key*pub > hostlist
+./conode build hostlist
+```
 
 Now you can pass the generated ```config.toml```-file to all your users who
 have to restart their conode in ```run```-mode.
